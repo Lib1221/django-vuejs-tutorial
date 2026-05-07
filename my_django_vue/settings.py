@@ -24,7 +24,7 @@ SECRET_KEY = '4&^r$vl)9yx!d%+p%l(hzaith^=+*%=6s+-^8mrzmi9h*fn*h@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [h.strip() for h in os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',') if h.strip()]
 
 # Application definition
 

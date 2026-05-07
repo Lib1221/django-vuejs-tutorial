@@ -1,0 +1,25 @@
+services:
+  web:
+    build:
+      context: .
+    image: django-vuejs-tutorial:latest
+    environment:
+      DJANGO_ALLOWED_HOSTS: "*"
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8000"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+
+  test:
+    image: django-vuejs-tutorial:latest
+    depends_on:
+      web:
+        condition: service_healthy
+    environment:
+      APP_BASE_URL: "http://web:8000"
+      CHROME_BIN: /usr/bin/chromium
+      CHROME_DRIVER_PATH: /usr/bin/chromedriver
+    command: ["pytest", "-v"]
