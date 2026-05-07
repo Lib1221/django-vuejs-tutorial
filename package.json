@@ -12,7 +12,7 @@
     "webpack",
     "django"
   ],
-  "author": "michael bukachi",
+  "author": "lib1221 <adugnaliben65@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.3.4",
